@@ -19,7 +19,7 @@ enum Rotor_Direction {
 }
 
 //% weight=70 icon="\uf075" color=#555555 block="コメント"
-namespace comment {
+namespace lv8548 {
     //% blockId=show_strings block="Init serial tx = %tx rx = %rx"
     //% tx.defl=SerialPin.P2
     //% rx.defl=SerialPin.P8
@@ -30,34 +30,32 @@ namespace comment {
             BaudRate.BaudRate19200
         )
         let bufrini = pins.createBuffer(3);
-        // setRotation
-        bufrini.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
-        bufrini.setNumber(NumberFormat.UInt8LE, 1, 0xFE);
-        bufrini.setNumber(NumberFormat.UInt8LE, 2, 0x00);
-        serial.writeBuffer(bufrini)
-        /*
-                basic.pause(100)
-                bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
-                bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
-                bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
-                bufr.setNumber(NumberFormat.UInt8LE, 3, 0x41);
-                bufr.setNumber(NumberFormat.UInt8LE, 4, 0x00);
-                bufr.setNumber(NumberFormat.UInt8LE, 5, 0x32);
-                serial.writeBuffer(bufr)
-                basic.pause(100)
-                */
     }
 
-    //% blockId=lv8548dc_setrotation block="Set %m motor to %sel"
-    export function setRotation(m: Motor, sel: Rotor_Direction): void {
+    //% blockId=lv8548dc_setrotation block="Set %ch motor to %sel"
+    export function setRotation(ch: Motor, sel: Rotor_Direction): void {
         let bufr = pins.createBuffer(6);
         // setRotation
         bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
         bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
         bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
         bufr.setNumber(NumberFormat.UInt8LE, 3, 0x44);
-        bufr.setNumber(NumberFormat.UInt8LE, 4, m);
+        bufr.setNumber(NumberFormat.UInt8LE, 4, ch);
         bufr.setNumber(NumberFormat.UInt8LE, 5, sel);
+        serial.writeBuffer(bufr)
+    }
+
+    //% blockId=lv8548dc_setctlvoltage block="Set %ch motor pwm to %duty"
+    //% duty.min=0 duty.max=100
+    export function setCtlVoltage(ch: Motor, duty: number): void {
+        let bufr = pins.createBuffer(6);
+        // setRotation
+        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
+        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x41);
+        bufr.setNumber(NumberFormat.UInt8LE, 4, ch);
+        bufr.setNumber(NumberFormat.UInt8LE, 5, duty);
         serial.writeBuffer(bufr)
     }
 }
