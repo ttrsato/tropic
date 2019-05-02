@@ -20,7 +20,7 @@ enum Rotor_Direction {
 
 //% weight=70 icon="\uf075" color=#555555 block="コメント"
 namespace comment {
-    //% blockId=show_strings block="Init %v"
+    //% blockId=show_strings block="Init serial tx = %tx rx = %rx"
     //% tx.defl=SerialPin.P2
     //% rx.defl=SerialPin.P8
     export function init(tx: SerialPin, rx: SerialPin): void {
@@ -48,7 +48,7 @@ namespace comment {
                 */
     }
 
-    //% blockId=lv8548dc_setrotation block="setRotation %v"
+    //% blockId=lv8548dc_setrotation block="Set %m motor to %sel"
     export function setRotation(m: Motor, sel: Rotor_Direction): void {
         let bufr = pins.createBuffer(6);
         // setRotation
