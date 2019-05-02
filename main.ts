@@ -1,26 +1,6 @@
-/**
- * Types of tropical fruit
- */
-enum TropicalFruit {
-    Banana = 0,
-    Pinapple = 1,
-    Coconut = 2
-}
-
-/**
- * Pick some fruit and peel it.
- */
-namespace tropic {
-    /**
-     * Pick a fruit
-     */
-    export function pick(fruit: TropicalFruit): boolean {
-        return true;
-    }
-    /**
-     * Peel the fruit if possible
-     */
-    export function peel(fruit: TropicalFruit): boolean {
-        return (fruit == TropicalFruit.Banana);
+//% weight=70 icon="\uf075" color=#555555 block="コメント"
+namespace comment {
+    //% blockId=show_strings block="コメント %v"
+    export function noaction(text: string): void {
     }
 }
