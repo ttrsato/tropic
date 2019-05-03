@@ -89,7 +89,7 @@ namespace lv8548 {
         serial.writeBuffer(bufr)
     }
 
-    //% blockId=lv8548dc_setstartflag block="%en %ch motorh"
+    //% blockId=lv8548dc_setstartflag block="%en %ch motor"
     export function setStartFlag(ch: Motor, en: ON_OFF_Flag): void {
         let bufr = pins.createBuffer(6);
         // setRotation
