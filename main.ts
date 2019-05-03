@@ -18,6 +18,24 @@ enum Rotor_Direction {
     Break = 5
 }
 
+enum PWM_Freq {
+    //% block="7.813kHz"
+    DIV1_8 = 0,
+    //% block="0.977kHz"
+    DIV1_64 = 1,
+    //% block="0.244kHz"
+    DIV1_256 = 2,
+    //% block="0.061kHz"
+    DIV1_1024 = 3
+}
+
+enum ON_OFF_Flag {
+    //% block="Stop"
+    OFF = 0,
+    //% block="Run"
+    ON = 1
+}
+
 //% weight=70 icon="\uf075" color=#555555 block="コメント"
 namespace lv8548 {
     //% blockId=show_strings block="Init serial tx = %tx rx = %rx"
@@ -29,33 +47,57 @@ namespace lv8548 {
             rx,
             BaudRate.BaudRate19200
         )
-        let bufrini = pins.createBuffer(3);
+        let bufrini = pins.createBuffer(3)
     }
 
     //% blockId=lv8548dc_setrotation block="Set %ch motor to %sel"
     export function setRotation(ch: Motor, sel: Rotor_Direction): void {
         let bufr = pins.createBuffer(6);
         // setRotation
-        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
-        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
-        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
-        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x44);
-        bufr.setNumber(NumberFormat.UInt8LE, 4, ch);
-        bufr.setNumber(NumberFormat.UInt8LE, 5, sel);
+        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
+        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF)
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03)
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x44)
+        bufr.setNumber(NumberFormat.UInt8LE, 4, ch)
+        bufr.setNumber(NumberFormat.UInt8LE, 5, sel)
         serial.writeBuffer(bufr)
     }
 
-    //% blockId=lv8548dc_setctlvoltage block="Set %ch motor pwm to %duty"
+    //% blockId=lv8548dc_setctlvoltage block="%ch motor pwm duty = %duty"
     //% duty.min=0 duty.max=100
     export function setCtlVoltage(ch: Motor, duty: number): void {
         let bufr = pins.createBuffer(6);
         // setRotation
+        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
+        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF)
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03)
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x41)
+        bufr.setNumber(NumberFormat.UInt8LE, 4, ch)
+        bufr.setNumber(NumberFormat.UInt8LE, 5, duty)
+        serial.writeBuffer(bufr)
+    }
+
+    //% blockId=lv8548dc_setpwmfreqency block="PWM frequency = %freq"
+    export function setPWMFreqency(freq: PWM_Freq): void {
+        let bufr = pins.createBuffer(5);
+        // setRotation
         bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
         bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
         bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
-        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x41);
-        bufr.setNumber(NumberFormat.UInt8LE, 4, ch);
-        bufr.setNumber(NumberFormat.UInt8LE, 5, duty);
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x67);
+        bufr.setNumber(NumberFormat.UInt8LE, 4, freq);
+        serial.writeBuffer(bufr)
+    }
+
+    //% blockId=lv8548dc_setstartflag block="PWM frequency = %freq"
+    export function setStartFlag(en: ON_OFF_Flag): void {
+        let bufr = pins.createBuffer(5);
+        // setRotation
+        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
+        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x68);
+        bufr.setNumber(NumberFormat.UInt8LE, 4, en);
         serial.writeBuffer(bufr)
     }
 }
