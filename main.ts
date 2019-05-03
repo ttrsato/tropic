@@ -90,7 +90,7 @@ namespace lv8548 {
     }
 
     //% blockId=lv8548dc_setstartflag block="%en %ch motor"
-    export function setStartFlag(ch: Motor, en: ON_OFF_Flag): void {
+    export function setStartFlag(en: ON_OFF_Flag, ch: Motor): void {
         let bufr = pins.createBuffer(6);
         // setRotation
         bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
