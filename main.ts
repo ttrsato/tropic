@@ -36,7 +36,7 @@ enum ON_OFF_Flag {
     ON = 1
 }
 
-//% weight=70 icon="\uf075" color=#555555 block="コメント"
+//% weight=70 icon="\uf075" color=#555555 block="LV8548"
 namespace lv8548 {
     //% blockId=show_strings block="Init serial tx = %tx rx = %rx"
     //% tx.defl=SerialPin.P2
@@ -63,7 +63,7 @@ namespace lv8548 {
         serial.writeBuffer(bufr)
     }
 
-    //% blockId=lv8548dc_setctlvoltage block="%ch motor pwm duty = %duty"
+    //% blockId=lv8548dc_setctlvoltage block="Set %ch motor pwm duty = %duty"
     //% duty.min=0 duty.max=100
     export function setCtlVoltage(ch: Motor, duty: number): void {
         let bufr = pins.createBuffer(6);
@@ -77,27 +77,28 @@ namespace lv8548 {
         serial.writeBuffer(bufr)
     }
 
-    //% blockId=lv8548dc_setpwmfreqency block="PWM frequency = %freq"
+    //% blockId=lv8548dc_setpwmfreqency block="Set PWM frequency = %freq"
     export function setPWMFreqency(freq: PWM_Freq): void {
         let bufr = pins.createBuffer(5);
         // setRotation
-        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
-        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
-        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
-        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x67);
-        bufr.setNumber(NumberFormat.UInt8LE, 4, freq);
+        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
+        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF)
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03)
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x67)
+        bufr.setNumber(NumberFormat.UInt8LE, 4, freq)
         serial.writeBuffer(bufr)
     }
 
-    //% blockId=lv8548dc_setstartflag block="PWM frequency = %freq"
-    export function setStartFlag(en: ON_OFF_Flag): void {
-        let bufr = pins.createBuffer(5);
+    //% blockId=lv8548dc_setstartflag block="%en %ch motorh"
+    export function setStartFlag(ch: Motor, en: ON_OFF_Flag): void {
+        let bufr = pins.createBuffer(6);
         // setRotation
-        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5);
-        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF);
-        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03);
-        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x68);
-        bufr.setNumber(NumberFormat.UInt8LE, 4, en);
+        bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
+        bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF)
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03)
+        bufr.setNumber(NumberFormat.UInt8LE, 3, 0x68)
+        bufr.setNumber(NumberFormat.UInt8LE, 4, ch)
+        bufr.setNumber(NumberFormat.UInt8LE, 5, en)
         serial.writeBuffer(bufr)
     }
 }
