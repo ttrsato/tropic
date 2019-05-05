@@ -36,7 +36,7 @@ enum ON_OFF_Flag {
     ON = 1
 }
 
-//% weight=70 icon="\uf075" color=#555555 block="LV8548"
+//% weight=70 icon="\uf2db" color=#555555 block="LV8548"
 namespace lv8548 {
     //% blockId=show_strings block="Init serial tx = %tx rx = %rx"
     //% tx.defl=SerialPin.P2
