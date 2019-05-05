@@ -52,6 +52,7 @@ namespace lv8548 {
         bufrini.setNumber(NumberFormat.UInt8LE, 1, 0xFE)
         // DC
         bufrini.setNumber(NumberFormat.UInt8LE, 2, 0x00)
+        serial.writeBuffer(bufrini)
     }
 
     //% blockId=lv8548dc_setrotation block="Set %ch motor to %sel"
