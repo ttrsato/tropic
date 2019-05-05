@@ -47,6 +47,7 @@ namespace lv8548 {
             rx,
             BaudRate.BaudRate19200
         )
+        basic.pause(100)
         let bufrini = pins.createBuffer(3)
         bufrini.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
         bufrini.setNumber(NumberFormat.UInt8LE, 1, 0xFE)
