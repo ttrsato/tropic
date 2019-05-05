@@ -89,7 +89,7 @@ namespace lv8548 {
         // setRotation
         bufr.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
         bufr.setNumber(NumberFormat.UInt8LE, 1, 0xFF)
-        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x03)
+        bufr.setNumber(NumberFormat.UInt8LE, 2, 0x02)
         bufr.setNumber(NumberFormat.UInt8LE, 3, 0x67)
         bufr.setNumber(NumberFormat.UInt8LE, 4, freq)
         serial.writeBuffer(bufr)
