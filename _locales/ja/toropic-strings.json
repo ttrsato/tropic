@@ -1,0 +1,15 @@
+{
+    "Rotor_Direction.Forward_Open|block": "正転(オープン)",
+    "Rotor_Direction.Forward_Break|block": "正転(ブレーキ)",
+    "Rotor_Direction.Reverse_Open|block": "逆転(オープン)",
+    "Rotor_Direction.Reverse_Break|block": "逆転(ブレーキ)",
+    "Rotor_Direction.Open|block": "オープン",
+    "Rotor_Direction.Break|block": "ブレーキ",
+    "ON_OFF_Flag.OFF|block": "止める",
+    "ON_OFF_Flag.ON|block": "回す",
+    "lv8548.init|block": "シリアルの初期化 tx=%tx|rx=%rx",
+    "lv8548.setRotation|block": "%ch|のモータの回し方を%sel|にする",
+    "lv8548.setCtlVoltage|block": "%ch|のモータの電圧を%duty|パーセントにする",
+    "lv8548.setPWMFrequency|block": "PWM の周波数を%freq|にする",
+    "lv8548.setStartFlag|block": "%ch|のモータを%en"
+}
