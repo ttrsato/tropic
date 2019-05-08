@@ -47,7 +47,18 @@ namespace lv8548 {
             rx,
             BaudRate.BaudRate19200
         )
-        basic.pause(100)
+        basic.showString("N")
+        let init_done = 0
+        while (!(init_done)) {
+            basic.pause(200)
+            let str = serial.readString()
+            if (str[0] == "R") {
+                serial.writeString("A")
+                init_done = 1
+                basic.showIcon(IconNames.Yes)
+                basic.pause(200)
+            }
+        }
         let bufrini = pins.createBuffer(3)
         bufrini.setNumber(NumberFormat.UInt8LE, 0, 0xA5)
         bufrini.setNumber(NumberFormat.UInt8LE, 1, 0xFE)
