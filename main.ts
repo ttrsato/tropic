@@ -40,7 +40,7 @@ enum ON_OFF_Flag {
 namespace lv8548 {
     //% blockId=show_strings block="Init serial tx = %tx rx = %rx"
     //% tx.defl=SerialPin.P2
-    //% rx.defl=SerialPin.P8
+    //% rx.defl=SerialPin.P1
     export function init(tx: SerialPin, rx: SerialPin): void {
         serial.redirect(
             tx,
