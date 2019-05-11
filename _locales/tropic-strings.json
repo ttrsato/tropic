@@ -1,0 +1,20 @@
+{
+  "ON_OFF_Flag.OFF|block": "Stop",
+  "ON_OFF_Flag.ON|block": "Run",
+  "PWM_Freq.DIV1_1024|block": "0.061kHz",
+  "PWM_Freq.DIV1_256|block": "0.244kHz",
+  "PWM_Freq.DIV1_64|block": "0.977kHz",
+  "PWM_Freq.DIV1_8|block": "7.813kHz",
+  "Rotor_Direction.Break|block": "Break",
+  "Rotor_Direction.Forward_Break|block": "Forward-Break",
+  "Rotor_Direction.Forward_Open|block": "Forward-Open",
+  "Rotor_Direction.Open|block": "Open",
+  "Rotor_Direction.Reverse_Break|block": "Reverse-Break",
+  "Rotor_Direction.Reverse_Open|block": "Reverse-Open",
+  "lv8548.init|block": "Init serial tx = %tx rx = %rx",
+  "lv8548.setCtlVoltage|block": "Set %ch motor pwm duty = %duty",
+  "lv8548.setPWMFreqency|block": "Set PWM frequency = %freq",
+  "lv8548.setRotation|block": "Set %ch motor to %sel",
+  "lv8548.setStartFlag|block": "%en %ch motor",
+  "{id:category}Lv8548": "Lv8548"
+}

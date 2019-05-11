@@ -1,0 +1,20 @@
+{
+  "ON_OFF_Flag.OFF|block": "止める",
+  "ON_OFF_Flag.ON|block": "回す",
+  "PWM_Freq.DIV1_1024|block": "0.061kHz",
+  "PWM_Freq.DIV1_256|block": "0.244kHz",
+  "PWM_Freq.DIV1_64|block": "0.977kHz",
+  "PWM_Freq.DIV1_8|block": "7.813kHz",
+  "Rotor_Direction.Break|block": "ブレーキ",
+  "Rotor_Direction.Forward_Break|block": "正転-ブレーキ",
+  "Rotor_Direction.Forward_Open|block": "正転-オープン",
+  "Rotor_Direction.Open|block": "Open",
+  "Rotor_Direction.Reverse_Break|block": "反転-ブレーキ",
+  "Rotor_Direction.Reverse_Open|block": "反転-オープン",
+  "lv8548.init|block": "初期化 tx = %tx rx = %rx",
+  "lv8548.setCtlVoltage|block": "%ch motor の電圧のパーセント = %duty",
+  "lv8548.setPWMFreqency|block": "Set PWM 周波数 = %freq",
+  "lv8548.setRotation|block": "%ch motor の動作モード %sel",
+  "lv8548.setStartFlag|block": "%en %ch motor",
+  "{id:category}Lv8548": "Lv8548"
+}
